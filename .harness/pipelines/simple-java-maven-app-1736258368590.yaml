@@ -31,6 +31,19 @@ pipeline:
                       type: branch
                       spec:
                         branch: master
+              - step:
+                  type: Owasp
+                  name: Owasp_1
+                  identifier: Owasp_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: repository
+                      detection: auto
+                    advanced:
+                      log:
+                        level: info
           platform:
             os: Linux
             arch: Amd64
