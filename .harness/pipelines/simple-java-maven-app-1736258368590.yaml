@@ -32,8 +32,15 @@ pipeline:
                       spec:
                         branch: master
               - step:
+                  type: Run
+                  name: Maven
+                  identifier: Maven
+                  spec:
+                    shell: Sh
+                    command: mvn clean install -DskipTests
+              - step:
                   type: RunTests
-                  name: RunTests_1
+                  name: mvn
                   identifier: RunTests_1
                   spec:
                     language: Java
