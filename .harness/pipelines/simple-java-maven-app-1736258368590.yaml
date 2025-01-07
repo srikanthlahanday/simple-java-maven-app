@@ -38,19 +38,12 @@ pipeline:
                       spec:
                         branch: master
               - step:
-                  type: RunTests
-                  name: Build Java Code
-                  identifier: Build_Java_Code
+                  type: Run
+                  name: build java
+                  identifier: build_java
                   spec:
-                    language: Java
-                    buildTool: Maven
-                    args: mvn clean install -DskipTests
-                    runOnlySelectedTests: true
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths: <+input>
-                    enableTestSplitting: false
+                    shell: Sh
+                    command: mvn clean install
           platform:
             os: Linux
             arch: Amd64
