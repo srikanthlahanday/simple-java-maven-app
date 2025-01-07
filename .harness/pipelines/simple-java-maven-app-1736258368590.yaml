@@ -28,12 +28,29 @@ pipeline:
                   timeout: ""
                   type: Run
               - step:
-                  type: Run
-                  name: Run_2
-                  identifier: Run_2
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
                   spec:
-                    shell: Sh
-                    command: mvn clean install -DskipTests
+                    connectorRef: casestudy1
+                    build:
+                      type: branch
+                      spec:
+                        branch: master
+              - step:
+                  type: RunTests
+                  name: Build Java Code
+                  identifier: Build_Java_Code
+                  spec:
+                    language: Java
+                    buildTool: Maven
+                    args: mvn clean install -DskipTests
+                    runOnlySelectedTests: true
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths: <+input>
+                    enableTestSplitting: false
           platform:
             os: Linux
             arch: Amd64
