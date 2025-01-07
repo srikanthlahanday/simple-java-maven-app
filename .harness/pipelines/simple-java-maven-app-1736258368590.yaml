@@ -26,7 +26,7 @@ pipeline:
                   identifier: GitClone_1
                   spec:
                     connectorRef: casestudy1
-                    cloneDirectory: /harness/simple-java-maven-app
+                    cloneDirectory: /home/ec2-user/harness/simple-java-maven-app/
                     build:
                       type: branch
                       spec:
