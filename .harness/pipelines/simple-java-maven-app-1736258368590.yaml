@@ -32,6 +32,13 @@ pipeline:
                       spec:
                         branch: master
               - step:
+                  type: Run
+                  name: maven
+                  identifier: maven
+                  spec:
+                    shell: Sh
+                    command: mvn clean install
+              - step:
                   type: Owasp
                   name: Owasp_1
                   identifier: Owasp_1
