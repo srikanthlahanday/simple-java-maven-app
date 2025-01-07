@@ -12,10 +12,11 @@ pipeline:
   stages:
     - stage:
         identifier: build
-        name: build
+        name: build test and publish
         spec:
           caching:
             enabled: true
+            paths: []
           cloneCodebase: true
           execution:
             steps:
@@ -27,9 +28,12 @@ pipeline:
                   timeout: ""
                   type: Run
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
+          buildIntelligence:
+            enabled: false
         type: CI
+        description: ""
