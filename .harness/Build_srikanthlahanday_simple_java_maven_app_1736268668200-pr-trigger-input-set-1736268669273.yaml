@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_srikanthlahanday_simple_java_maven_app_1736268668200-pr-trigger-input-set
+  identifier: Build_srikanthlahanday_simple_java_maven_app_1736268668200prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_srikanthlahanday_simple_java_maven_app_1736268668200
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
