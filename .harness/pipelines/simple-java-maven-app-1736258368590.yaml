@@ -31,21 +31,6 @@ pipeline:
                       type: branch
                       spec:
                         branch: master
-              - step:
-                  type: RunTests
-                  name: mvn
-                  identifier: RunTests_1
-                  spec:
-                    language: Java
-                    buildTool: Maven
-                    args: mvn clean install -DskipTests
-                    runOnlySelectedTests: true
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "**/*.xml"
-                    enableTestSplitting: false
           platform:
             os: Linux
             arch: Amd64
