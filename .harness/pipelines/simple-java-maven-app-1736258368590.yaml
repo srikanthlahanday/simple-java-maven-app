@@ -21,29 +21,31 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: echo
-                  name: echo
-                  spec:
-                    command: echo hello world
-                  timeout: ""
-                  type: Run
-              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
                   spec:
                     connectorRef: casestudy1
+                    cloneDirectory: /harness/simple-java-maven-app
                     build:
                       type: branch
                       spec:
                         branch: master
               - step:
-                  type: Run
-                  name: build java
-                  identifier: build_java
+                  type: RunTests
+                  name: RunTests_1
+                  identifier: RunTests_1
                   spec:
-                    shell: Sh
-                    command: mvn clean install
+                    language: Java
+                    buildTool: Maven
+                    args: mvn clean install -DskipTests
+                    runOnlySelectedTests: true
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/*.xml"
+                    enableTestSplitting: false
           platform:
             os: Linux
             arch: Amd64
